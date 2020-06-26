@@ -1,5 +1,6 @@
 package challenge;
 
+import java.util.Objects;
 
 public class Motorista {
 
@@ -61,12 +62,12 @@ public class Motorista {
                 ", habilitacao='" + habilitacao + '\'' +
                 '}';
     }
-
+    
+    
     public static MotoristaBuilder builder() {
         return new MotoristaBuilder();
     }
-
-
+    
     public static class MotoristaBuilder {
 
         private String nome;
@@ -86,11 +87,17 @@ public class Motorista {
         }
 
         public MotoristaBuilder withIdade(int idade) {
-            this.idade = idade;
+        	if(idade < 0 )
+        		throw new IllegalArgumentException("Idade negativa.");
+        	
+        	this.idade = idade;
             return this;
         }
 
         public MotoristaBuilder withPontos(int pontos) {
+    		if (pontos < 0) 
+    			throw new IllegalArgumentException("Pontos na habilitação negativos: " + pontos);
+
             this.pontos = pontos;
             return this;
         }
@@ -100,9 +107,24 @@ public class Motorista {
             return this;
         }
 
-
         public Motorista build() {
-            return new Motorista(nome, idade, pontos, habilitacao);
+        	Motorista motorista =new Motorista(nome, idade, pontos, habilitacao);
+        	motorista.validar();
+        	return motorista;
         }
     }
+    
+    /**
+     * Validações dos campos do Motorista.
+     */
+    public void validar() {
+		if (this.habilitacao == null || this.habilitacao.trim().isEmpty()) {
+   			throw new NullPointerException();
+   		}
+   		
+   		if (this.nome  == null || this.nome.trim().isEmpty()) {
+   			throw new NullPointerException();
+   		}
+    }
+    
 }
