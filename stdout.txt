@@ -1,4 +1,3 @@
-Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :clean
 > Task :compileJava
 > Task :processResources NO-SOURCE
@@ -8,5 +7,5 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :testClasses
 > Task :test
 
-BUILD SUCCESSFUL in 8s
+BUILD SUCCESSFUL in 1s
 4 actionable tasks: 4 executed

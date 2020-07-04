@@ -1,6 +1,6 @@
 package challenge;
 
-public class Constantes {
+public final class Constantes {
 
 	public static final int QUANTIDADE_VAGAS = 10;
 	
@@ -9,5 +9,9 @@ public class Constantes {
 	public static final int IDADE_MINIMA = 18;
 	
 	public static final int IDADE_PERMANENCIA_PERMITIDA = 55;
-			
+
+	private Constantes() {
+		super();
+	}
+	
 }
